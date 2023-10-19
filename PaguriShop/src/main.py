@@ -15,7 +15,7 @@ OBJECTS = {
         'name' : 'La flag',
         'foto' : 'flag.png',
         'description' : 'Prova a prendermi se ci riesci',
-        'text' : 'flag{Wh3r3_d1d_y0u_g3t_th3_m0n3y?}',
+        'text' : 'flag{Wh3r3_d1d_y0u_g3t_th3_m0n3ys?}',
         'price' : 1000
     },
     '2' : {
@@ -23,7 +23,7 @@ OBJECTS = {
         'name' : 'Il gabibbo',
         'foto' : 'gabibbo.png',
         'description' : 'Mascotte epica quasi regalata',
-        'text' : 'Bella scelta (meglio della flag) ma adesso ti sta tracciando e saprà dove abiti',
+        'text' : 'Bella scelta (meglio della flag) ma adesso ti sta tracciando e tra poco saprà dove abiti',
         'price' : 10
     },
     '3' : {
@@ -31,7 +31,7 @@ OBJECTS = {
         'name' : 'I segreti di stato di St3pNy',
         'foto' : 'stepny.png',
         'description' : 'Il vero motivo per cui ha evaso le tasse',
-        'text' : 'Non è un vero segreto di stato, semplicemente gli faceva comodo così poteva shoppare su fortnite',
+        'text' : 'Non è un vero segreto di stato, semplicemente gli faceva comodo così poteva shoppare su Fortnite',
         'price' : 500
     }
 }
@@ -94,7 +94,9 @@ def buy(userID: str):
     if USERS[userID]['saldo'] < OBJECTS[id]['price'] * int(qty):
         return make_response(redirect('/?error=Non hai abbastanza soldi'))
 
-    USERS[userID]['prodotti'].append(id)
+    if(qty > 0):
+        USERS[userID]['prodotti'].append(id)
+    #TODO: controllare che qty sia un numero positivo maggiore di 0
     USERS[userID]['saldo'] -= OBJECTS[id]['price'] * int(qty) # aggiorno il saldo
     
     if id == '1':
