@@ -1,0 +1,24 @@
+{% extends "template.html" %}
+{% block content %}
+<div id="title" class="text-center" style="padding: 2.5%">
+    <h1>Ultimi acquisti</h1>
+</div>
+<div class="col">
+    {% for data in objects %}
+    <div class="row card mb-3 w-50 mx-auto" style="max-width: 70%;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ url_for('static', filename=data['foto']) }}" class="img-fluid rounded-start" alt="{{ data['name'] }}">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ data['name'] }}</h5>
+                    <p class="card-text">{{ data['text'] }}</p>
+                    <p class="card-text"><small class="text-body-secondary">{{ data['description'] }}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

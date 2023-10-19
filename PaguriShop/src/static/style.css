@@ -1,0 +1,28 @@
+.container{
+    max-width: 280px;
+}
+
+.btn{
+    height: 40px;
+    width: 40px;
+    margin: 0 0 5px 0;
+}
+
+.uguale{
+    height: 40px;
+    width: 95px;
+}
+
+.saldo{
+    margin-right: 5%;
+    color: #fff;
+    font-size: 150%;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}

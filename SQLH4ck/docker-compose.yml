@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  sqlh4ck:
+    build: .
+    depends_on:
+      - mysql
+    ports:
+      - "6060:80"
+    image: "sqlh4ck"
+
+  mysql:
+    image: "mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "sqlh4ck"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "admin"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/mysql.sql

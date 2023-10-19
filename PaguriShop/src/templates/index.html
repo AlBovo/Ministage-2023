@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+{% block content %}
+<div id="title" class="text-center" style="padding: 2.5%">
+    <h1>Paguro's Shop</h1>
+</div>
+{% if error %}
+<div class="alert alert-danger text-center" role="danger" style="margin-left: 30%; margin-right: 30%; margin-bottom: 2.5%">
+    {{ error }}
+</div>
+{% endif %}
+<div class="row">
+    {% for data in objects %}
+        <form action="/buy" method="POST" class="col card" style="margin: 5%; width: 18rem;">
+            <h5 style="padding: 2%;">Price: {{ data['price'] }} €</h5>
+            <img src="{{ url_for('static', filename=data['foto']) }}" class="card-img-top" alt="{{ data['name'] }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ data['name'] }}</h5>
+                <p class="card-text">{{ data['description'] }}</p>
+                <input name="id" value="{{ data['id'] }}" hidden="" />
+                <div class="d-grid gap-2 d-md-block">
+                    <button class="btn btn-primary" type="submit" style="width:25%">Buy</button>
+                    <label style="margin: 2.5%;">Quantità</label>
+                    <input name="qty" value="1" type="number" style="max-width: 25%;"/>
+                </div>
+            </div>
+        </form>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+version: '3'
+services:
+  pagurishop:
+    build: .
+    ports:
+      - "7070:80"
+    image: "pagurishop"
