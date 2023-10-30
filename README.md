@@ -1,8 +1,9 @@
 # Ministage-2023
-<div align="left">
-    ![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
-    ![GitHub issues](https://img.shields.io/github/issues/AlBovo/Ministage-2023)
-</div>
+<p align="left">
+    <img alt="MIT License" src="https://img.shields.io/badge/License-MIT-green.svg">
+    <img alt="GitHub issues" src="https://img.shields.io/github/issues/AlBovo/Ministage-2023">
+    <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/albovo/Ministage-2023">
+</p>
 La repository contenente tutte le challenge stile CTF di websecurity per il ministage preparate durante l'anno scolastico 2023/2024.
 
 
