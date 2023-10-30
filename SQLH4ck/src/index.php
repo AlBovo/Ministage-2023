@@ -1,4 +1,10 @@
 <?php
+    /**
+     * This script handles the login form submission.
+     * It checks if the username and password are set, and if so, it queries the database to check if the user exists.
+     * If the user exists, it logs them in and redirects them to the notes page.
+     * If the user does not exist or the username/password are not set, it sets an error message.
+     */
     session_start();
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $host = 'mysql';

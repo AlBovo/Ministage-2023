@@ -1,3 +1,6 @@
+# This script stops the Docker Compose services for LoginEsotico, PaguriShop, and SQLH4ck.
+# It also prunes Docker images and volumes if the corresponding arguments are passed.
+# Usage: ./stop.sh [image] [volume]
 #!/bin/bash
 
 cd LoginEsotico && docker compose down

@@ -1,4 +1,14 @@
 <?php
+    /**
+     * This script retrieves notes from the database for the currently logged in user.
+     * It first checks if the user is logged in by verifying the existence of a session variable.
+     * If the user is not logged in, they are redirected to the home page.
+     * The script then connects to the MySQL database using the provided credentials.
+     * It prepares and executes two SQL statements to retrieve the user's information and notes.
+     * The retrieved notes are stored in the $result variable as an associative array.
+     * Finally, the database connection is closed.
+     */
+    
     session_start();
 
     if(!isset($_SESSION['session'])){

@@ -1,3 +1,10 @@
+/**
+ * This SQL script creates two tables named "users" and "notes" and inserts data into them. 
+ * The "users" table has columns "id", "username" and "password" while the "notes" table has columns "user_id", "title" and "content". 
+ * The script drops the tables if they already exist before creating them. 
+ * The "users" table is populated with five rows of data while the "notes" table is populated with five rows of data. 
+*/
+
 DROP TABLE IF EXISTS `users`; -- Drop the table if it already exists
 CREATE TABLE users (
     id INTEGER AUTO_INCREMENT,

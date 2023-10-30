@@ -9,6 +9,18 @@ USERS = {} # {userID: {'saldo': saldo, 'prodotti': [prodotti acquistati]}}
 SECRET_KEY = os.urandom(36).hex()
 assert len(SECRET_KEY) == 36 * 2
 
+'''
+The `OBJECTS` dictionary contains information about the products available for purchase in the PaguriShop web application. Each product is represented by a dictionary with the following keys:
+
+- `id`: a unique identifier for the product
+- `name`: the name of the product
+- `foto`: the filename of the product's image
+- `description`: a short description of the product
+- `text`: additional information about the product
+- `price`: the price of the product in PaguriShop's currency (not specified in the code)
+
+The `OBJECTS` dictionary is used throughout the application to display information about the available products and to handle purchases made by users.
+'''
 OBJECTS = {
     '1' : {
         'id' : '1',
@@ -37,6 +49,17 @@ OBJECTS = {
 }
 
 def authorized(f):
+    """
+    A decorator function that checks if the user is authorized to access a certain route.
+    If the user is not authorized, it creates a new account and sets a cookie with a unique session ID.
+    If the user is authorized, it returns the decorated function with the user ID as an argument.
+
+    Args:
+        f (function): The function to be decorated.
+
+    Returns:
+        function: The decorated function.
+    """
     @wraps(f)
     def decorated(*args, **kwargs):
         try:
@@ -67,6 +90,15 @@ def authorized(f):
 @app.route('/', methods=['GET'])
 @authorized
 def index(userID: str):
+    """
+    Renders the index page with a list of objects and the user's saldo.
+
+    Args:
+        userID (str): The ID of the user.
+
+    Returns:
+        str: The rendered HTML template.
+    """
     objects = [x for x in OBJECTS.values()]
     saldo = USERS[userID]['saldo']
     if request.args.get('error') != None:
@@ -76,11 +108,32 @@ def index(userID: str):
 @app.route('/history', methods=['GET'])
 @authorized
 def history(userID: str):
+    """
+    Renders the history.html template with the list of products purchased by the user and their current balance.
+
+    Args:
+        userID (str): The ID of the user whose purchase history is being displayed.
+
+    Returns:
+        The rendered history.html template with the list of purchased products and the user's current balance.
+    """
     return render_template('history.html', objects=[OBJECTS[x] for x in USERS[userID]['prodotti']], saldo=str(USERS[userID]['saldo']))
 
 @app.route('/buy', methods=['POST'])
 @authorized
 def buy(userID: str):
+    """
+    This function handles the purchase of products by a user.
+
+    Args:
+        userID (str): The ID of the user making the purchase.
+
+    Returns:
+        A redirect to the user's purchase history page.
+
+    Raises:
+        None
+    """
     id = request.form['id']
     if id not in ['1', '2', '3']:
         return make_response(redirect('/?error=Prodotto non valido'))
