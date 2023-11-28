@@ -4,8 +4,7 @@
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/AlBovo/Ministage-2023">
     <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/albovo/Ministage-2023">
 </p>
-La repository contenente tutte le challenge stile CTF di websecurity per il ministage preparate durante l'anno scolastico 2023/2024.
-
+This repository contains all the websecurity CTF-style challenges for the ministages (events where last year middle school students visit high schools) of my school, prepared during the 2023/2024 school year.
 
 ## Run Locally
 
